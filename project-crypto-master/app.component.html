@@ -1,0 +1,13 @@
+<div style="text-align:center">
+  <h1>💰 Live Crypto Prices</h1>
+
+  <div *ngIf="cryptoPrices.bitcoin">
+    <p><strong>Bitcoin:</strong> ${{ cryptoPrices.bitcoin.usd }}</p>
+    <p><strong>Ethereum:</strong> ${{ cryptoPrices.ethereum.usd }}</p>
+    <p><strong>Dogecoin:</strong> ${{ cryptoPrices.dogecoin.usd }}</p>
+  </div>
+
+  <div *ngIf="!cryptoPrices.bitcoin">
+    <p>Loading prices...</p>
+  </div>
+</div>

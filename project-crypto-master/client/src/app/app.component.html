@@ -1,0 +1,27 @@
+<div>
+  <app-nav></app-nav>
+
+  <app-page-container>
+    <app-scroll
+      *ngIf="!loadingCoinsFailed || coins.length"
+      (onHitBottom)="loadCoins()"
+    >
+      <app-tile
+        *ngFor="let coin of coins; trackBy: trackCoins"
+        [name]="coin.name"
+        [price]="
+          coin.quote[currentCurrency.name]
+            ? coin.quote[currentCurrency.name].price
+            : 0
+        "
+        [currencyIcon]="currentCurrency.icon"
+        [isFavourite]="coin.isFavourite"
+        (toggleFavourite)="onToggleFavourite(coin)"
+      ></app-tile>
+    </app-scroll>
+
+    <div *ngIf="loadingCoinsFailed && !coins.length" class="error">
+      <span class="b1">An error has occurred...</span>
+    </div>
+  </app-page-container>
+</div>
